@@ -42,11 +42,13 @@ QrDetector::~QrDetector()
 void QrDetector::getParams()
 {
     // use string literals in this function only
-    using namespace std::string_literals;
+    //using namespace std::string_literals;
+    
+    std::string top("/camera/image");
 
     // request paramerter from the parameter server
     // if not found, use a default value
-    _param_sub_topic = _priv_node.param("sub_topic", "/camera/image"s);
+    _param_sub_topic = _priv_node.param("sub_topic", top);
 }
 
 void QrDetector::cb_imageRGB(const sensor_msgs::ImageConstPtr& rgb, const sensor_msgs::CameraInfoConstPtr& info_msg)
